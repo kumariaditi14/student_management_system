@@ -1,0 +1,261 @@
+{% extends "base.html" %}
+
+{% block title %}
+Student Profile
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <!-- ===================== PROFILE HEADER ===================== -->
+
+    <div class="profile-card">
+
+        <div class="profile-left">
+
+            <img src="{{ url_for('static', filename='images/user.png') }}"
+                 alt="Student Photo"
+                 class="profile-image">
+
+        </div>
+
+        <div class="profile-right">
+
+            <h1>{{ student[1] }}</h1>
+
+            <p class="usn">
+                <strong>USN :</strong> {{ student[2] }}
+            </p>
+
+            <div class="badge-row">
+
+                <span class="dept-badge">
+                    {{ student[12] }}
+                </span>
+
+                <span class="dept-badge">
+                    Semester {{ student[13] }}
+                </span>
+
+                <span class="dept-badge">
+                    Section {{ student[14] }}
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ===================== PERSONAL ===================== -->
+
+    <div class="info-card">
+
+        <h2>👤 Personal Information</h2>
+
+        <table class="profile-table">
+
+            <tr>
+                <th>Gender</th>
+                <td>{{ student[3] }}</td>
+            </tr>
+
+            <tr>
+                <th>Date of Birth</th>
+                <td>{{ student[4] }}</td>
+            </tr>
+
+            <tr>
+                <th>Blood Group</th>
+                <td>{{ student[5] }}</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <!-- ===================== CONTACT ===================== -->
+
+    <div class="info-card">
+
+        <h2>📞 Contact Information</h2>
+
+        <table class="profile-table">
+
+            <tr>
+                <th>Email</th>
+                <td>{{ student[6] }}</td>
+            </tr>
+
+            <tr>
+                <th>Phone</th>
+                <td>{{ student[7] }}</td>
+            </tr>
+
+            <tr>
+                <th>Address</th>
+                <td>{{ student[8] }}</td>
+            </tr>
+
+            <tr>
+                <th>City</th>
+                <td>{{ student[9] }}</td>
+            </tr>
+
+            <tr>
+                <th>State</th>
+                <td>{{ student[10] }}</td>
+            </tr>
+
+            <tr>
+                <th>Pincode</th>
+                <td>{{ student[11] }}</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <!-- ===================== ACADEMIC ===================== -->
+
+    <div class="info-card">
+
+        <h2>🎓 Academic Information</h2>
+
+        <table class="profile-table">
+
+            <tr>
+                <th>Department</th>
+                <td>{{ student[12] }}</td>
+            </tr>
+
+            <tr>
+                <th>Semester</th>
+                <td>{{ student[13] }}</td>
+            </tr>
+
+            <tr>
+                <th>Section</th>
+                <td>{{ student[14] }}</td>
+            </tr>
+
+            <tr>
+                <th>Batch</th>
+                <td>{{ student[15] }}</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <!-- ===================== PARENT ===================== -->
+
+    <div class="info-card">
+
+        <h2>👨‍👩‍👧 Parent Details</h2>
+
+        <table class="profile-table">
+
+            <tr>
+                <th>Father Name</th>
+                <td>{{ student[16] }}</td>
+            </tr>
+
+            <tr>
+                <th>Mother Name</th>
+                <td>{{ student[17] }}</td>
+            </tr>
+
+            <tr>
+                <th>Parent Phone</th>
+                <td>{{ student[18] }}</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <!-- ===================== PROFESSIONAL ===================== -->
+
+    <div class="info-card">
+
+        <h2>💻 Professional Profiles</h2>
+
+        <table class="profile-table">
+
+            <tr>
+                <th>GitHub</th>
+
+                <td>
+
+                    {% if student[19] %}
+
+                        <a href="{{ student[19] }}" target="_blank">
+                            Open GitHub
+                        </a>
+
+                    {% else %}
+
+                        -
+                        
+                    {% endif %}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <th>LinkedIn</th>
+
+                <td>
+
+                    {% if student[20] %}
+
+                        <a href="{{ student[20] }}" target="_blank">
+                            Open LinkedIn
+                        </a>
+
+                    {% else %}
+
+                        -
+
+                    {% endif %}
+
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+    <!-- ===================== ACTION BUTTONS ===================== -->
+
+    <div class="profile-buttons">
+
+        <a href="/edit-student/{{ student[0] }}">
+            <button class="add-btn">
+                ✏ Edit Student
+            </button>
+        </a>
+
+        <!-- Uses your existing export route -->
+        <a href="/export-pdf">
+            <button class="export-btn">
+                📄 Download PDF
+            </button>
+        </a>
+
+        <a href="/students">
+            <button class="export-btn">
+                ⬅ Back to Students
+            </button>
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

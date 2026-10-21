@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Students · Ghutoo{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="page-header"><div><h2>Student directory</h2><p>{{ total }} student records</p></div><div class="header-buttons"><a class="button button-light" href="/import-students">↑ Import CSV</a><a class="button button-light" href="/export-csv">↓ Export CSV</a><a class="button button-light" href="/export-pdf">↓ Export PDF</a><a class="button button-primary" href="/add-student">＋ Add student</a></div></div>
+  <div class="search-tools">
+    <form action="/students" method="get"><input type="search" name="search" placeholder="Search name, USN, department, city…" value="{{ search }}"><button type="submit">Search</button></form>
+    <form action="/students" method="get"><input type="hidden" name="search" value="{{ search }}"><select name="department" aria-label="Department"><option value="">All departments</option>{% for item in departments %}<option value="{{ item }}" {% if department == item %}selected{% endif %}>{{ item }}</option>{% endfor %}</select><select name="sort" aria-label="Sort by"><option value="name" {% if sort == 'name' %}selected{% endif %}>Name (A–Z)</option><option value="semester" {% if sort == 'semester' %}selected{% endif %}>Semester</option><option value="department" {% if sort == 'department' %}selected{% endif %}>Department</option></select><button type="submit">Apply</button></form>
+  </div>
+  <div class="table-wrap"><table><thead><tr><th>#</th><th>Student</th><th>USN</th><th>Department</th><th>Semester</th><th>Section</th><th>City</th><th>Phone</th><th>Actions</th></tr></thead><tbody>
+  {% for student in students %}<tr><td>{{ (page - 1) * 30 + loop.index }}</td><td><a class="table-name" href="/student-profile/{{ student.id }}">{{ student.name }}</a></td><td>{{ student.usn }}</td><td><span class="badge">{{ student.department }}</span></td><td>{{ student.semester }}</td><td>{{ student.section }}</td><td>{{ student.city }}</td><td>{{ student.phone }}</td><td><a href="/student-profile/{{ student.id }}">View</a> · <a href="/edit-student/{{ student.id }}">Edit</a> · <form style="display:inline" method="post" action="/delete-student/{{ student.id }}" onsubmit="return confirm('Delete this student?')"><button class="danger" type="submit">Delete</button></form></td></tr>
+  {% else %}<tr><td colspan="9" class="empty-state">No students found. Try another search or add a student.</td></tr>{% endfor %}
+  </tbody></table></div>
+  <div class="pagination"><span>Page {{ page }} of {{ total_pages }}</span><span>{% if page > 1 %}<a href="{{ url_for('students', page=page-1, search=search, department=department, sort=sort) }}">← Previous</a>{% endif %} {% if page < total_pages %}<a href="{{ url_for('students', page=page+1, search=search, department=department, sort=sort) }}">Next →</a>{% endif %}</span></div>
+</div>
+{% endblock %}

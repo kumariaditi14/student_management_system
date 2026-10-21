@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add Student
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="page-header"><div><h2>🎓 Add New Student</h2><p>Enter a student's details below or import many records at once.</p></div><a class="button button-light" href="/import-students">↑ Import CSV</a></div>
+
+    <form action="/add-student"
+          method="POST"
+          enctype="multipart/form-data">
+
+        <!-- ================= PERSONAL ================= -->
+
+        <div class="form-section">
+
+            <h3>👤 Personal Information</h3>
+
+            <label>Full Name</label>
+            <input type="text"
+                   name="name"
+                   placeholder="Enter Full Name"
+                   required>
+
+            <label>USN</label>
+            <input type="text"
+                   name="usn"
+                   placeholder="Enter USN"
+                   required>
+
+            <label>Student Photo</label>
+            <input type="file"
+                   name="photo"
+                   accept="image/*">
+
+            <label>Gender</label>
+            <select name="gender" required>
+                <option value="">Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+
+            <label>Date of Birth</label>
+            <input type="date"
+                   name="dob"
+                   required>
+
+            <label>Blood Group</label>
+            <select name="blood_group" required>
+                <option value="">Select Blood Group</option>
+                <option>A+</option>
+                <option>A-</option>
+                <option>B+</option>
+                <option>B-</option>
+                <option>AB+</option>
+                <option>AB-</option>
+                <option>O+</option>
+                <option>O-</option>
+            </select>
+
+        </div>
+
+        <!-- ================= CONTACT ================= -->
+
+        <div class="form-section">
+
+            <h3>📞 Contact Information</h3>
+
+            <label>Email</label>
+            <input type="email"
+                   name="email"
+                   required>
+
+            <label>Phone Number</label>
+            <input type="text"
+                   name="phone"
+                   required>
+
+            <label>Address</label>
+            <textarea name="address"
+                      rows="3"
+                      required></textarea>
+
+            <label>City</label>
+            <input type="text"
+                   name="city"
+                   required>
+
+            <label>State</label>
+            <input type="text"
+                   name="state"
+                   required>
+
+            <label>PIN Code</label>
+            <input type="text"
+                   name="pincode"
+                   required>
+
+        </div>
+
+        <!-- ================= ACADEMIC ================= -->
+
+        <div class="form-section">
+
+            <h3>🎓 Academic Information</h3>
+
+            <label>Department</label>
+            <select name="department" required>
+                <option value="">Select Department</option>
+                <option>AIML</option>
+                <option>CSE</option>
+                <option>ISE</option>
+                <option>ECE</option>
+                <option>EEE</option>
+                <option>ME</option>
+                <option>CV</option>
+            </select>
+
+            <label>Semester</label>
+            <select name="semester" required>
+                <option value="">Select Semester</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+            </select>
+
+            <label>Section</label>
+            <input type="text"
+                   name="section"
+                   placeholder="A"
+                   required>
+
+            <label>Batch</label>
+            <input type="text"
+                   name="batch"
+                   placeholder="2024-2028"
+                   required>
+
+        </div>
+
+        <!-- ================= PARENT ================= -->
+
+        <div class="form-section">
+
+            <h3>👨‍👩‍👧 Parent Details</h3>
+
+            <label>Father Name</label>
+            <input type="text"
+                   name="father_name"
+                   required>
+
+            <label>Mother Name</label>
+            <input type="text"
+                   name="mother_name"
+                   required>
+
+            <label>Parent Phone</label>
+            <input type="text"
+                   name="parent_phone"
+                   required>
+
+        </div>
+
+        <!-- ================= PROFESSIONAL ================= -->
+
+        <div class="form-section">
+
+            <h3>💻 Professional Profiles</h3>
+
+            <label>GitHub Profile</label>
+            <input type="url"
+                   name="github"
+                   placeholder="https://github.com/username">
+
+            <label>LinkedIn Profile</label>
+            <input type="url"
+                   name="linkedin"
+                   placeholder="https://linkedin.com/in/username">
+
+        </div>
+
+        <br>
+
+        <button type="submit" class="save-btn">
+            💾 Save Student
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

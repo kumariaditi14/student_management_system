@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Student
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+<h2>Edit Student</h2>
+
+<form method="POST">
+
+<h3>👤 Personal Information</h3>
+
+<label>Full Name</label>
+<input type="text" name="name" value="{{ student[1] }}" required>
+
+<label>USN</label>
+<input type="text" name="usn" value="{{ student[2] }}" required>
+
+<label>Gender</label>
+<select name="gender" required>
+    <option {% if student[3]=='Male' %}selected{% endif %}>Male</option>
+    <option {% if student[3]=='Female' %}selected{% endif %}>Female</option>
+    <option {% if student[3]=='Other' %}selected{% endif %}>Other</option>
+</select>
+
+<label>Date of Birth</label>
+<input type="date" name="dob" value="{{ student[4] }}" required>
+
+<label>Blood Group</label>
+<select name="blood_group" required>
+    <option value="A+" {% if student[5]=='A+' %}selected{% endif %}>A+</option>
+    <option value="A-" {% if student[5]=='A-' %}selected{% endif %}>A-</option>
+    <option value="B+" {% if student[5]=='B+' %}selected{% endif %}>B+</option>
+    <option value="B-" {% if student[5]=='B-' %}selected{% endif %}>B-</option>
+    <option value="AB+" {% if student[5]=='AB+' %}selected{% endif %}>AB+</option>
+    <option value="AB-" {% if student[5]=='AB-' %}selected{% endif %}>AB-</option>
+    <option value="O+" {% if student[5]=='O+' %}selected{% endif %}>O+</option>
+    <option value="O-" {% if student[5]=='O-' %}selected{% endif %}>O-</option>
+</select>
+
+<hr>
+
+<h3>📞 Contact Information</h3>
+
+<label>Email</label>
+<input type="email" name="email" value="{{ student[6] }}" required>
+
+<label>Phone</label>
+<input type="text" name="phone" value="{{ student[7] }}" required>
+
+<label>Address</label>
+<textarea name="address" rows="3" required>{{ student[8] }}</textarea>
+
+<label>City</label>
+<input type="text" name="city" value="{{ student[9] }}" required>
+
+<label>State</label>
+<input type="text" name="state" value="{{ student[10] }}" required>
+
+<label>PIN Code</label>
+<input type="text" name="pincode" value="{{ student[11] }}" required>
+
+<hr>
+
+<h3>🎓 Academic Information</h3>
+
+<label>Department</label>
+<select name="department" required>
+    <option value="AIML" {% if student[12]=='AIML' %}selected{% endif %}>AIML</option>
+    <option value="CSE" {% if student[12]=='CSE' %}selected{% endif %}>CSE</option>
+    <option value="ISE" {% if student[12]=='ISE' %}selected{% endif %}>ISE</option>
+    <option value="ECE" {% if student[12]=='ECE' %}selected{% endif %}>ECE</option>
+    <option value="EEE" {% if student[12]=='EEE' %}selected{% endif %}>EEE</option>
+    <option value="ME" {% if student[12]=='ME' %}selected{% endif %}>ME</option>
+    <option value="CV" {% if student[12]=='CV' %}selected{% endif %}>CV</option>
+</select>
+
+<label>Semester</label>
+<input type="number" name="semester" value="{{ student[13] }}" required>
+
+<label>Section</label>
+<input type="text" name="section" value="{{ student[14] }}" required>
+
+<label>Batch</label>
+<input type="text" name="batch" value="{{ student[15] }}" required>
+
+<hr>
+
+<h3>👨‍👩‍👧 Parent Details</h3>
+
+<label>Father Name</label>
+<input type="text" name="father_name" value="{{ student[16] }}" required>
+
+<label>Mother Name</label>
+<input type="text" name="mother_name" value="{{ student[17] }}" required>
+
+<label>Parent Phone</label>
+<input type="text" name="parent_phone" value="{{ student[18] }}" required>
+
+<hr>
+
+<h3>💻 Professional Information</h3>
+
+<label>GitHub</label>
+<input type="url" name="github" value="{{ student[19] }}">
+
+<label>LinkedIn</label>
+<input type="url" name="linkedin" value="{{ student[20] }}">
+
+<button type="submit">Update Student</button>
+
+</form>
+
+</div>
+
+{% endblock %}

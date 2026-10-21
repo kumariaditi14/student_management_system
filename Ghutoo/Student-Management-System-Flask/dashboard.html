@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="section-heading"><div><h2>Dashboard</h2><p>A snapshot of the student directory.</p></div><a class="button button-primary" href="/students">View students →</a></div>
+<div class="card-grid">
+
+        <div class="card">
+            <h3>Total Students</h3>
+            <h1>{{ stats.total or 0 }}</h1>
+        </div>
+
+        <div class="card">
+            <h3>Departments</h3>
+            <h1>{{ stats.departments or 0 }}</h1>
+        </div>
+
+        <div class="card">
+            <h3>Male Students</h3>
+            <h1>{{ stats.male or 0 }}</h1>
+        </div>
+
+        <div class="card">
+            <h3>Female Students</h3>
+            <h1>{{ stats.female or 0 }}</h1>
+        </div>
+
+        <div class="card">
+            <h3>Other</h3>
+            <h1>{{ stats.other or 0 }}</h1>
+        </div>
+
+        <div class="card">
+            <h3>Final Year Students</h3>
+            <h1>{{ stats.final_year or 0 }}</h1>
+        </div>
+
+    </div>
+
+    <div class="container"><div class="section-heading"><div><h2>Students by department</h2><p>Distribution across academic departments.</p></div></div><div class="table-wrap"><table>
+
+        <thead>
+
+            <tr>
+
+                <th>Department</th>
+                <th>Students</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for dept in department_stats %}
+
+            <tr>
+
+                <td>{{ dept.department }}</td>
+
+                <td>{{ dept.count }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table></div></div>
+
+{% endblock %}

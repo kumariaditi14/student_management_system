@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Import students · Ghutoo{% endblock %}
+{% block content %}
+<div class="container import-page">
+  <div class="page-header"><div><h2>Import students from CSV</h2><p>Add or update many student records in one upload.</p></div><a class="button button-light" href="/students">← Student directory</a></div>
+
+  <div class="import-steps">
+    <div><span class="step-number">1</span><section><h3>Prepare your CSV</h3><p>Download the template and fill in one student per row. Required columns are included; GitHub and LinkedIn are optional.</p><a class="button button-light" href="/import-template">↓ Download CSV template</a></section></div>
+    <div><span class="step-number">2</span><section><h3>Upload and apply</h3><p>Rows with a matching USN update that student. New USNs create new records. Invalid rows are skipped and listed below.</p>
+      <form class="import-form" action="/import-students" method="post" enctype="multipart/form-data">
+        <label for="csv-file">Choose CSV file</label><input id="csv-file" type="file" name="csv_file" accept=".csv,text/csv" required>
+        <button type="submit">Upload and import students</button>
+      </form>
+    </section></div>
+  </div>
+  <div class="import-note"><strong>Keep USN unique.</strong> Matching is case-sensitive. Student photos are not included in CSV imports. Use dates in YYYY-MM-DD format and semester numbers from 1 to 8.</div>
+
+  {% if error %}<div class="import-alert import-alert-error" role="alert">{{ error }}</div>{% endif %}
+  {% if processed %}
+    <div class="import-results" role="status"><h3>Import complete</h3><div><span><strong>{{ added }}</strong> added</span><span><strong>{{ updated }}</strong> updated</span><span><strong>{{ skipped }}</strong> skipped</span></div></div>
+    {% if errors %}<div class="import-errors"><h3>Rows to correct</h3><p>Fix these rows in the CSV and upload again.</p><ul>{% for item in errors %}<li>{{ item }}</li>{% endfor %}</ul></div>{% endif %}
+  {% endif %}
+</div>
+{% endblock %}

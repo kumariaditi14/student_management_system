@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <span class="eyebrow">Student information, made simple</span>
+    <h1>Every student record, right where it belongs.</h1>
+    <p>A clear, dependable workspace to organize student details, find information quickly, and keep your directory up to date.</p>
+    <div class="hero-actions"><a href="/students" class="button button-primary">Browse directory →</a><a href="/add-student" class="button button-light">Add a student</a></div>
+    <div class="home-stats"><span><strong>{{ total_students }}</strong> Students</span><span><strong>{{ total_departments }}</strong> Departments</span></div>
+</section>
+
+<div class="section-heading" style="margin-top:38px"><div><h2>Quick access</h2><p>Jump into the tools you use most.</p></div></div>
+
+<div class="dashboard-shortcuts">
+
+    <a href="/students" class="shortcut-card">
+        <h2>Student directory</h2>
+        <p>View and manage students</p>
+    </a>
+
+    <a href="/add-student" class="shortcut-card">
+        <h2>Add a student</h2>
+        <p>Register a new student</p>
+    </a>
+
+    <a href="/dashboard" class="shortcut-card">
+        <h2>Overview</h2>
+        <p>View statistics</p>
+    </a>
+
+    <a href="/about" class="shortcut-card">
+        <h2>About the system</h2>
+        <p>Learn about the directory and its features.</p>
+    </a>
+
+</div>
+
+{% endblock %}

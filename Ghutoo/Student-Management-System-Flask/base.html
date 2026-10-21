@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Student Management System{% endblock %}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+<header class="site-header">
+  <a class="brand" href="/"><span class="brand-mark">G</span><span>Gh<span class="brand-accent">utoo</span><small>STUDENT DIRECTORY</small></span></a>
+  <nav aria-label="Main navigation">
+    <a href="/">Home</a><a href="/students">Students</a><a href="/import-students">Import CSV</a><a href="/dashboard">Dashboard</a><a href="/about">About</a><a href="/contact">Contact</a>
+  </nav>
+  <a class="button button-primary header-action" href="/add-student">＋ Add student</a>
+</header>
+
+<main>
+{% block content %}{% endblock %}
+</main>
+
+<footer><span>Gh<u>utoo</u> Student Directory</span><span>Simple, organized student records</span></footer>
+
+</body>
+
+</html>
